@@ -17,9 +17,17 @@ object AdManager {
 
     private const val TAG = "AdManager"
 
-    // Using Production IDs exclusively for Play Store release
-    private val INTERSTITIAL_AD_UNIT_ID = "ca-app-pub-8204679574020840/4582478497"
-    private val REWARDED_AD_UNIT_ID = "ca-app-pub-8204679574020840/5830271122"
+    private val INTERSTITIAL_AD_UNIT_ID = if (BuildConfig.DEBUG) {
+        "ca-app-pub-3940256099942544/1033173712" // Test Interstitial ID
+    } else {
+        "ca-app-pub-8204679574020840/4582478497" // Production Interstitial ID
+    }
+
+    private val REWARDED_AD_UNIT_ID = if (BuildConfig.DEBUG) {
+        "ca-app-pub-3940256099942544/5224354917" // Test Rewarded ID
+    } else {
+        "ca-app-pub-8204679574020840/5830271122" // Production Rewarded ID
+    }
 
     private var interstitialAd: InterstitialAd? = null
     private var rewardedAd: RewardedAd? = null

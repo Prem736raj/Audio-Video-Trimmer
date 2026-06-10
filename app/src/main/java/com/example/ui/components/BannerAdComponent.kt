@@ -11,8 +11,11 @@ import com.google.android.gms.ads.AdView
 
 @Composable
 fun BannerAdComponent(modifier: Modifier = Modifier) {
-    // Using Production ID exclusively for Play Store release
-    val adUnitId = "ca-app-pub-8204679574020840/1708903146"
+    val adUnitId = if (BuildConfig.DEBUG) {
+        "ca-app-pub-3940256099942544/6300978111" // Test Banner ID
+    } else {
+        "ca-app-pub-8204679574020840/1708903146" // Production Banner ID
+    }
     
     AndroidView(
         modifier = modifier.fillMaxWidth(),

@@ -1,3 +1,6 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
   alias(libs.plugins.android.application)
   alias(libs.plugins.kotlin.compose)
@@ -13,7 +16,7 @@ android {
   defaultConfig {
     applicationId = "com.video.trimmer.audio.cutter"
     minSdk = 24
-    targetSdk = 36
+    targetSdk = 34
     versionCode = 1
     versionName = "1.0"
 
@@ -24,9 +27,16 @@ android {
     create("release") {
       val keystorePath = System.getenv("KEYSTORE_PATH") ?: "${rootDir}/my-upload-key.jks"
       storeFile = file(keystorePath)
-      storePassword = System.getenv("STORE_PASSWORD")
-      keyAlias = "upload"
-      keyPassword = System.getenv("KEY_PASSWORD")
+      
+      val properties = Properties()
+      val localProps = rootProject.file("local.properties")
+      if (localProps.exists()) {
+          properties.load(FileInputStream(localProps))
+      }
+      
+      storePassword = properties.getProperty("STORE_PASSWORD") ?: System.getenv("STORE_PASSWORD")
+      keyAlias = properties.getProperty("KEY_ALIAS") ?: "upload"
+      keyPassword = properties.getProperty("KEY_PASSWORD") ?: System.getenv("KEY_PASSWORD")
     }
     create("debugConfig") {
       storeFile = file("${rootDir}/debug.keystore")
@@ -38,8 +48,9 @@ android {
 
   buildTypes {
     release {
-      isCrunchPngs = false
-      isMinifyEnabled = false
+      isCrunchPngs = true
+      isMinifyEnabled = true
+      isShrinkResources = true
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
       signingConfig = signingConfigs.getByName("release")
       manifestPlaceholders["admob_app_id"] = "ca-app-pub-8204679574020840~5719129484"

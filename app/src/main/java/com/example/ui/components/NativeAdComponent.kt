@@ -36,8 +36,11 @@ fun NativeAdComponent() {
     val context = LocalContext.current
     var nativeAd by remember { mutableStateOf<NativeAd?>(null) }
 
-    // Using Production ID exclusively for Play Store release
-    val adUnitId = "ca-app-pub-8204679574020840/7965479877"
+    val adUnitId = if (BuildConfig.DEBUG) {
+        "ca-app-pub-3940256099942544/2247696110" // Test Native Advanced ID
+    } else {
+        "ca-app-pub-8204679574020840/7965479877" // Production Native ID
+    }
 
     DisposableEffect(Unit) {
         val adLoader = AdLoader.Builder(context, adUnitId)

@@ -20,8 +20,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.ui.graphics.Color
-import com.aistudio.mediatrimmer.kfqnzm.R
-import com.aistudio.mediatrimmer.kfqnzm.BuildConfig
+import com.video.trimmer.audio.cutter.R
+import com.video.trimmer.audio.cutter.BuildConfig
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest

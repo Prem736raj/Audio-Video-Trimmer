@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-  namespace = "com.aistudio.mediatrimmer.kfqnzm"
+  namespace = "com.video.trimmer.audio.cutter"
   compileSdk { version = release(36) { minorApiLevel = 1 } }
 
   defaultConfig {
-    applicationId = "com.aistudio.mediatrimmer.kfqnzm"
+    applicationId = "com.video.trimmer.audio.cutter"
     minSdk = 24
     targetSdk = 36
     versionCode = 1

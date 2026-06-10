@@ -516,7 +516,7 @@ fun AudioTrimmerScreen(
                         )
                         .clickable(
                             interactionSource = remember { MutableInteractionSource() },
-                            indication = androidx.compose.material.ripple.rememberRipple(bounded = false, radius = 40.dp),
+                            indication = androidx.compose.material3.ripple(bounded = false, radius = 40.dp),
                             onClick = { viewModel.toggleAudioPlaying() }
                         ),
                     contentAlignment = Alignment.Center

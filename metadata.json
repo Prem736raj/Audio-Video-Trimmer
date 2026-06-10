@@ -1,0 +1,6 @@
+{
+  "name": "Media Trimmer",
+  "description": "Trim, cut, save, and extract audio and video files easy and fast.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
